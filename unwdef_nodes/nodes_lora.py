@@ -77,7 +77,7 @@ class RandomizeLoras:
             model, clip = LoraLoader().load_lora(model, clip, lora['name'], strength, strength)
 
             # Append the current lora and its value to the string
-            chosen_str += f"<lora:{lora['name'].split('.')[0]}:{strength:.2f}>, "
+            chosen_str += f"<lora:{'.'.join(lora['name'].split('.')[:-1])}:{strength:.2f}>, "
 
             # Append the trigger words for each lora
             existing_chosen_trigger_words = set(chosen_trigger_words.split(', '))
@@ -176,7 +176,7 @@ class RandomizeLorasStack:
             lora_list.extend([(lora['name'], strength, strength)]),
 
             # Append the current lora and its value to the string
-            chosen_str += f"<lora:{lora['name'].split('.')[0]}:{strength:.2f}>, "
+            chosen_str += f"<lora:{'.'.join(lora['name'].split('.')[:-1])}:{strength:.2f}>, "
 
             # Append the trigger words for each lora
             existing_chosen_trigger_words = set(chosen_trigger_words.split(', '))
